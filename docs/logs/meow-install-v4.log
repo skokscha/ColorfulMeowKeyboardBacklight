@@ -1,0 +1,49 @@
+══════ [1/6] Патч whitelist'а (idempotent) ══════
+    уже патчен — пропускаю
+
+══════ [2/6] Пересборка DKMS (если в дереве свежие патчи) ══════
+    .ko актуален — пересборка не нужна
+
+══════ [3/6] Полная выгрузка стека (включая compat-check!) ══════
+    стек выгружен чисто
+
+══════ [4/6] Загрузка патченного стека ══════
+    tuxedo_keyboard: ✔
+    clevo_wmi: ✔
+    clevo_acpi: ✔
+clevo_acpi             20480  0
+clevo_wmi              20480  0
+tuxedo_keyboard       131072  2 clevo_acpi,clevo_wmi
+tuxedo_compatibility_check    20480  1 tuxedo_keyboard
+sparse_keymap          12288  1 tuxedo_keyboard
+led_class_multicolor    16384  1 tuxedo_keyboard
+wmi                    45056  4 video,nvidia_wmi_ec_backlight,clevo_wmi,wmi_bmof
+    ✘ LED нет
+
+══════ [5/6] Тип подсветки и форс ══════
+-- dmesg:
+[ 4027.669833] tuxedo_keyboard: Set keyboard backlight mode on CUSTOM
+[ 4027.683387] clevo_wmi: interface initialized
+[ 4027.692420] clevo_acpi: unknown parameter 'force_clevo_kb_backlight_type' ignored
+[ 4027.697448] clevo_acpi: interface initialized
+    ✘ LED нет
+
+══════ [6/6] Финализация ══════
+
+══════ Итог ══════
+(LED нет)
+-- modules-load.d --
+(нет)
+-- modprobe.d --
+options clevo_acpi force_clevo_kb_backlight_type=6
+-- dkms --
+tuxedo-drivers/4.18.1+commown1, 7.3.1-1-cachyos, x86_64: installed (Original modules exist)
+tuxedo-drivers/4.25.0, 6.18.55-2-cachyos-lts, x86_64: installed (Original modules exist)
+tuxedo-drivers/4.25.0, 7.3.1-1-cachyos, x86_64: built (Original modules exist)
+enabled
+enabled
+
+➜ Ребут НЕ нужен. Ретрай:
+    sudo FORCE_TYPE=2   bash ~/meow-kbd/meow-kbd-v4.sh   # 3 зоны
+    sudo FORCE_TYPE=243 bash ~/meow-kbd/meow-kbd-v4.sh   # покей RGB
+  Не помогло — скажи мне, лог: /tmp/opencode/meow-install-v4.log

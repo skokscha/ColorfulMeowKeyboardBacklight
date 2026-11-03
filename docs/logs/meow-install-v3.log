@@ -1,0 +1,132 @@
+══════ [1/6] Патч whitelist'а в /usr/src/tuxedo-drivers-4.18.1+commown1 ══════
+patching file src/tuxedo_compatibility_check/tuxedo_compatibility_check.c
+    патч применён
+
+══════ [2/6] Пересборка DKMS (4.18.1+commown1 @ 7.3.1-1-cachyos) ══════
+Sign command: /usr/lib/modules/7.3.1-1-cachyos/build/scripts/sign-file
+Signing key: /var/lib/dkms/mok.key
+Public certificate (MOK): /var/lib/dkms/mok.pub
+
+Building module(s).... done.
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/clevo_acpi.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/clevo_wmi.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/gxtp7380/gxtp7380.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/ite_8291/ite_8291.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/ite_8291_lb/ite_8291_lb.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/ite_8297/ite_8297.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/ite_829x/ite_829x.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/stk8321/stk8321.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_compatibility_check/tuxedo_compatibility_check.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_io/tuxedo_io.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_keyboard.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb02_nvidia_power_ctrl/tuxedo_nb02_nvidia_power_ctrl.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb04/tuxedo_nb04_kbd_backlight.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb04/tuxedo_nb04_keyboard.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb04/tuxedo_nb04_power_profiles.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb04/tuxedo_nb04_sensors.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb04/tuxedo_nb04_wmi_ab.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb04/tuxedo_nb04_wmi_bs.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb05/tuxedo_nb05_ec.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb05/tuxedo_nb05_fan_control.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb05/tuxedo_nb05_kbd_backlight.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb05/tuxedo_nb05_keyboard.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb05/tuxedo_nb05_power_profiles.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_nb05/tuxedo_nb05_sensors.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_tuxi/tuxedo_tuxi_fan_control.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/tuxedo_tuxi/tuxi_acpi.ko
+Signing module /var/lib/dkms/tuxedo-drivers/4.18.1+commown1/build/src/uniwill_wmi.ko
+Module tuxedo-drivers/4.18.1+commown1 for kernel 7.3.1-1-cachyos (x86_64):
+Before uninstall, this module version was ACTIVE on this kernel.
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/clevo_acpi.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/clevo_wmi.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/gxtp7380.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/ite_8291.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/ite_8291_lb.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/ite_8297.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/ite_829x.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/stk8321.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_compatibility_check.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_io.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_keyboard.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb02_nvidia_power_ctrl.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_kbd_backlight.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_keyboard.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_power_profiles.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_sensors.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_wmi_ab.ko.zst
+Restoring archived original module /usr/lib/modules/7.3.1-1-cachyos/kernel/drivers/platform/x86/tuxedo/nb04/tuxedo_nb04_wmi_ab.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_wmi_bs.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_ec.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_fan_control.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_kbd_backlight.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_keyboard.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_power_profiles.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_sensors.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_tuxi_fan_control.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxi_acpi.ko.zst
+Deleting /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/uniwill_wmi.ko.zst
+Running depmod... done.
+
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/clevo_acpi.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/clevo_wmi.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/gxtp7380.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/ite_8291.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/ite_8291_lb.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/ite_8297.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/ite_829x.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/stk8321.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_compatibility_check.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_io.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_keyboard.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb02_nvidia_power_ctrl.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_kbd_backlight.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_keyboard.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_power_profiles.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_sensors.ko.zst
+Found pre-existing /usr/lib/modules/7.3.1-1-cachyos/kernel/drivers/platform/x86/tuxedo/nb04/tuxedo_nb04_wmi_ab.ko.zst, archiving for uninstallation
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_wmi_ab.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb04_wmi_bs.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_ec.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_fan_control.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_kbd_backlight.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_keyboard.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_power_profiles.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_nb05_sensors.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxedo_tuxi_fan_control.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/tuxi_acpi.ko.zst
+Installing /usr/lib/modules/7.3.1-1-cachyos/updates/dkms/uniwill_wmi.ko.zst
+Running depmod... done.
+    готово: tuxedo-drivers/4.25.0, 7.3.1-1-cachyos, x86_64: built (Original modules exist)
+
+══════ [3/6] Проба загрузки ══════
+modprobe: ERROR: could not insert 'tuxedo_keyboard': No such device
+modprobe: ERROR: could not insert 'clevo_wmi': No such device
+modprobe: ERROR: could not insert 'clevo_acpi': No such device
+tuxedo_compatibility_check    12288  0
+    ✘ LED нет
+
+══════ [4/6] Тип подсветки прошивки и форс ══════
+-- dmesg (тип подсветки):
+(debug-строк нет)
+    conf: options clevo_acpi force_clevo_kb_backlight_type=6
+    ✘ LED нет
+
+══════ [5/6] Финализация (CLI/GUI/сервисы/дефолт) ══════
+
+══════ [6/6] Итог ══════
+(LED нет)
+-- modules-load.d --
+(нет)
+-- modprobe.d --
+options clevo_acpi force_clevo_kb_backlight_type=6
+-- dkms --
+tuxedo-drivers/4.18.1+commown1, 7.3.1-1-cachyos, x86_64: installed (Original modules exist)
+tuxedo-drivers/4.25.0, 6.18.55-2-cachyos-lts, x86_64: installed (Original modules exist)
+tuxedo-drivers/4.25.0, 7.3.1-1-cachyos, x86_64: built (Original modules exist)
+enabled
+enabled
+
+➜ Ребут НЕ нужен. Ретрай с другими типами:
+    sudo FORCE_TYPE=2   bash ~/meow-kbd/meow-kbd-v3.sh   # 3 зоны
+    sudo FORCE_TYPE=243 bash ~/meow-kbd/meow-kbd-v3.sh   # покей RGB
+  Если ни один не завёлся — скажи мне, лог: /tmp/opencode/meow-install-v3.log

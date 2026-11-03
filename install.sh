@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+#
+# install.sh — install the kbdlight tool, udev rule and boot/resume restore.
+# Run with sudo:  sudo ./install.sh
+#
+# Adapted for Arch Linux / CachyOS.
+# Assumes the tuxedo_keyboard driver is already installed via DKMS (see README).
+#
+set -euo pipefail
+HERE="$(cd "$(dirname "$0")" && pwd)"
+[ "$(id -u)" -eq 0 ] || { echo "Run with sudo: sudo ./install.sh"; exit 1; }
+
+# group that gets passwordless access to the LED (the desktop user is in it)
+GRP="${KBDLIGHT_GROUP:-users}"
+LED=/sys/class/leds/rgb:kbdlight
+
+if [ ! -e "$LED/brightness" ]; then
+    echo "WARNING: $LED not found — the driver isn't set up yet."
+    echo "         Run  sudo ./install-driver.sh  first, then re-run this. Continuing anyway..."
+fi
+
+echo "==> GUI dependencies (Arch/CachyOS)"
+pacman -S --needed --noconfirm python-gobject gtk4 libadwaita 2>/dev/null || {
+    echo "    NOTE: could not install GUI deps via pacman. Install manually:"
+    echo "          sudo pacman -S python-gobject gtk4 libadwaita"
+}
+
+echo "==> binaries"
+install -m 0755 "$HERE/kbdlight"        /usr/local/bin/kbdlight
+install -m 0755 "$HERE/kbdlight-gui.py" /usr/local/bin/kbdlight-gui
+install -m 0755 "$HERE/kbdlight-listen" /usr/local/bin/kbdlight-listen
+
+echo "==> desktop entry"
+install -m 0644 "$HERE/data/kbdlight.desktop" /usr/share/applications/kbdlight.desktop
+
+echo "==> udev rule (passwordless access for group '$GRP')"
+sed "s/\busers\b/$GRP/" "$HERE/data/99-kbdlight.rules" > /etc/udev/rules.d/99-kbdlight.rules
+udevadm control --reload-rules || true
+udevadm trigger --subsystem-match=leds || true
+# apply now too (no 'add' event fires for an already-present node)
+if [ -e "$LED/brightness" ]; then
+    chgrp "$GRP" "$LED/brightness" "$LED/multi_intensity" 2>/dev/null || true
+    chmod 0664   "$LED/brightness" "$LED/multi_intensity" 2>/dev/null || true
+fi
+
+echo "==> state dir + default"
+install -d -m 0775 -g "$GRP" /var/lib/kbdlight
+if [ ! -f /var/lib/kbdlight/state ]; then
+    printf 'brightness=153\nintensity="255 255 255"\n' > /var/lib/kbdlight/state
+fi
+chgrp "$GRP" /var/lib/kbdlight/state; chmod 0664 /var/lib/kbdlight/state
+
+echo "==> boot + resume restore"
+install -m 0644 "$HERE/data/kbdlight-restore.service" /etc/systemd/system/kbdlight-restore.service
+install -m 0755 "$HERE/data/kbdlight-resume"          /usr/lib/systemd/system-sleep/kbdlight-resume
+systemctl daemon-reload
+systemctl enable kbdlight-restore.service >/dev/null 2>&1 || true
+
+echo "==> Fn-key listener (Fn+*/+/- -> kbdlight)"
+install -m 0644 "$HERE/data/kbdlight-keys.service" /etc/systemd/system/kbdlight-keys.service
+systemctl daemon-reload
+systemctl enable --now kbdlight-keys.service >/dev/null 2>&1 || true
+# Stop the desktop from also handling these keys (avoids double brightness steps).
+if [ -n "${SUDO_USER:-}" ] && command -v gsettings >/dev/null 2>&1; then
+    uid="$(id -u "$SUDO_USER")"
+    for k in keyboard-brightness-up-static keyboard-brightness-down-static keyboard-brightness-toggle-static; do
+        sudo -u "$SUDO_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+            gsettings set org.gnome.settings-daemon.plugins.media-keys "$k" "@as []" 2>/dev/null || true
+    done
+fi
+
+echo
+echo "Done. Try:  kbdlight color red   |   kbdlight set 60   |   kbdlight-gui"
+if [ ! -e "$LED/brightness" ]; then
+    echo "NOTE: $LED not present yet — load the driver (sudo modprobe clevo_acpi clevo_wmi) or reboot."
+fi

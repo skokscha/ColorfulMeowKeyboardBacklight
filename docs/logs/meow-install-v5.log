@@ -1,0 +1,74 @@
+══════ [1/4] Выгрузка стека ══════
+    стек выгружен
+
+══════ [2/4] Загрузка с дебагом dyndbg=+p ══════
+[    3.989681] tuxedo_keyboard: module init
+[    4.047781] tuxedo_keyboard: module init
+[    4.149525] tuxedo_keyboard: module init
+[    4.227894] tuxedo_keyboard: module init
+[    4.276405] tuxedo_keyboard: module init
+[ 2110.650721] tuxedo_keyboard: module init
+[ 2110.696584] tuxedo_keyboard: module init
+[ 2162.582474] tuxedo_keyboard: module init
+[ 2162.619325] tuxedo_keyboard: module init
+[ 3544.029260] tuxedo_keyboard: module init
+[ 3544.073193] tuxedo_keyboard: module init
+[ 3544.111283] tuxedo_keyboard: module init
+[ 3847.923389] tuxedo_keyboard: module init
+[ 3847.966375] tuxedo_keyboard: module init
+[ 3847.997269] tuxedo_keyboard: module init
+[ 3850.054471] tuxedo_keyboard: module init
+[ 3850.093076] tuxedo_keyboard: module init
+[ 3850.135105] tuxedo_keyboard: module init
+[ 4027.498483] tuxedo_keyboard: module init
+[ 4027.683387] clevo_wmi: interface initialized
+[ 4027.697448] clevo_acpi: interface initialized
+[ 4029.821240] tuxedo_keyboard: module init
+[ 4030.003531] clevo_wmi: interface initialized
+[ 4030.014657] clevo_acpi: interface initialized
+[ 4316.598052] tuxedo_keyboard: module init
+[ 4316.612545] tuxedo_keyboard: CLEVO_CMD_GET_SPECS result->buffer.pointer[0x0f]: 0x00
+[ 4316.663775] tuxedo_keyboard: CLEVO_CMD_GET_SPECS result->buffer.pointer[0x0f]: 0x00
+[ 4316.715906] tuxedo_keyboard: CLEVO_CMD_GET_SPECS result->buffer.pointer[0x0f]: 0x00
+[ 4316.767410] tuxedo_keyboard: Keyboard backlight type: 0x00
+[ 4316.781190] clevo_wmi: interface initialized
+[ 4316.795097] clevo_acpi: interface initialized
+    ✘ LED нет
+
+══════ [3/4] Форс типа подсветки на tuxedo_keyboard ══════
+    conf: options tuxedo_keyboard force_clevo_kb_backlight_type=6
+[ 4318.939659] tuxedo_keyboard: CLEVO_CMD_GET_SPECS result->buffer.pointer[0x0f]: 0x00
+[ 4318.991873] tuxedo_keyboard: CLEVO_CMD_GET_SPECS result->buffer.pointer[0x0f]: 0x00
+[ 4319.043209] tuxedo_keyboard: CLEVO_CMD_GET_SPECS result->buffer.pointer[0x0f]: 0x00
+[ 4319.095356] tuxedo_keyboard: Overriding detected keyboard backlight type 0x00 with forced 0x06
+[ 4319.095358] tuxedo_keyboard: Keyboard backlight type: 0x06
+    ✔ LED появился: /sys/class/leds/rgb:kbdlight
+
+══════ [4/4] Финализация ══════
+==> udev rule (passwordless access for group 'users')
+==> state dir + default
+==> boot + resume restore
+==> Fn-key listener (Fn+*/+/- -> kbdlight)
+
+Done. Try:  kbdlight color red   |   kbdlight set 60   |   kbdlight-gui
+saved current state to /var/lib/kbdlight/state
+    автозагрузка + оранжевый 60%
+
+══════ Итог ══════
+-rw-rw-r-- 1 root users 4096 окт 31 21:09 /sys/class/leds/rgb:kbdlight/brightness
+device     : /sys/class/leds/rgb:kbdlight
+brightness : 153 / 255  (60%)
+colour     : 255 90 0  (order: red green blue)
+-- modules-load.d --
+clevo_acpi
+clevo_wmi
+-- modprobe.d --
+options tuxedo_keyboard force_clevo_kb_backlight_type=6
+-- dkms --
+tuxedo-drivers/4.18.1+commown1, 7.3.1-1-cachyos, x86_64: installed (Original modules exist)
+tuxedo-drivers/4.25.0, 6.18.55-2-cachyos-lts, x86_64: installed (Original modules exist)
+tuxedo-drivers/4.25.0, 7.3.1-1-cachyos, x86_64: built (Original modules exist)
+enabled
+enabled
+
+➜ ПЕРЕЗАГРУЗИСЬ — проверяем автозагрузку и восстановление цвета.
